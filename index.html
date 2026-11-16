@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Lloyd Tran — Copywriter turning complex ideas into clear, compelling messages.">
+  <title>Lloyd Tran — Copywriter</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Lloyd Tran home">
+      <img src="assets/mark.svg" alt="" class="brand-mark">
+      <span class="brand-name">LLOYD<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#work" data-i18n="navWork">Selected work</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language"><span class="lang-active">EN</span><span class="lang-divider">/</span><span>VI</span></button>
+      <a class="header-cta" href="mailto:khanhthienz146@gmail.com" data-i18n="headerCta">Let’s talk <span>↗</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#about" data-i18n="navAbout">About</a><a href="#services" data-i18n="navServices">Services</a><a href="#work" data-i18n="navWork">Selected work</a><a href="#contact" data-i18n="navContact">Contact</a>
+  </nav>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="hero-gridline" aria-hidden="true"></div>
+      <div class="hero-topline mono"><span data-i18n="heroKicker">INDEPENDENT COPYWRITER · VIETNAM</span><span>10°49' N / 106°38' E</span></div>
+      <div class="hero-content">
+        <p class="eyebrow hero-eyebrow" data-i18n="heroEyebrow">WORDS WITH A JOB TO DO.</p>
+        <h1 class="hero-title"><span data-i18n="heroLine1">WORDS THAT</span><br><span class="outline-word" data-i18n="heroLine2">KNOW</span> <span data-i18n="heroLine3">WHAT</span><br><span data-i18n="heroLine4">THEY’RE</span> <span class="blue-word" data-i18n="heroLine5">DOING.</span></h1>
+        <div class="hero-bottom">
+          <p class="hero-description" data-i18n="heroDescription">I turn complex ideas into clear, compelling messages that help the right people understand what matters.</p>
+          <a class="round-link" href="#work" aria-label="Explore selected work"><span data-i18n="exploreWork">EXPLORE<br>THE WORK</span><b>↓</b></a>
+        </div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>LT</span><i>✳</i></div>
+      <div class="hero-footer mono"><span data-i18n="heroFooterLeft">COPYWRITING / CONTENT / STRATEGY</span><span data-i18n="heroFooterRight">SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <section class="intro-strip">
+      <p data-i18n="introStrip">GOOD COPY DOESN’T JUST SOUND GOOD. IT MAKES THE MESSAGE LAND.</p>
+      <span class="strip-star">✳</span>
+    </section>
+
+    <section class="about section-light section-pad" id="about">
+      <div class="section-index mono"><span>01 / <span data-i18n="aboutIndex">THE PERSON</span></span><span data-i18n="aboutAside">A LITTLE CONTEXT</span></div>
+      <div class="about-layout">
+        <div class="about-copy">
+          <p class="eyebrow blue-eyebrow" data-i18n="aboutEyebrow">HELLO, I’M LLOYD.</p>
+          <h2 class="section-heading" data-i18n="aboutHeading">I care about<br>what the words<br><em>actually do.</em></h2>
+          <div class="about-paragraphs">
+            <p data-i18n="aboutP1">I’m a copywriter working across email, advertising, websites, content and video scripts.</p>
+            <p data-i18n="aboutP2">Before writing, I look at the audience, the offer and the context. The goal is not to make something sound clever. It’s to make the message clear, relevant and worth paying attention to.</p>
+          </div>
+          <a class="text-link" href="mailto:khanhthienz146@gmail.com"><span data-i18n="aboutLink">Have a project in mind?</span><b>↗</b></a>
+        </div>
+        <div class="about-visual">
+          <div class="portrait-frame portrait-about" data-photo-slot="about">
+            <div class="portrait-placeholder"><span class="portrait-number">01</span><span class="portrait-label" data-i18n="portraitAbout">ABOUT / PORTRAIT</span><span class="portrait-note" data-i18n="photoPending">Photo will be added</span></div>
+            <img class="portrait-real" src="assets/portrait-about.jpg" alt="Lloyd Tran portrait" onerror="this.hidden=true">
+            <div class="portrait-caption mono"><span>LLOYD TRAN</span><span>2026 —</span></div>
+          </div>
+          <div class="orbit-note mono"><span>✳</span><span data-i18n="orbitNote">THINK CLEAR.<br>WRITE WITH INTENT.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="thinking section-dark section-pad" id="thinking">
+      <div class="section-index mono"><span>02 / <span data-i18n="thinkingIndex">THE APPROACH</span></span><span data-i18n="thinkingAside">HOW I THINK</span></div>
+      <div class="thinking-layout">
+        <h2 class="section-heading light-heading" data-i18n="thinkingHeading">Clarity first.<br><span class="blue-word">Everything</span><br>else follows.</h2>
+        <div class="thinking-points">
+          <article><span class="point-no mono">01</span><div><h3 data-i18n="think1Title">Understand before writing.</h3><p data-i18n="think1Body">Get close to the audience, product and actual problem before reaching for a headline.</p></div></article>
+          <article><span class="point-no mono">02</span><div><h3 data-i18n="think2Title">Make the message make sense.</h3><p data-i18n="think2Body">Find the useful point, remove the noise and give every sentence a reason to be there.</p></div></article>
+          <article><span class="point-no mono">03</span><div><h3 data-i18n="think3Title">Write for the moment.</h3><p data-i18n="think3Body">A cold email, a landing page and a short video need different rhythms. The message should fit the medium.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-blue section-pad" id="services">
+      <div class="section-index mono"><span>03 / <span data-i18n="servicesIndex">WHAT I DO</span></span><span data-i18n="servicesAside">COPYWRITING FIRST · STRATEGY SUPPORTS IT</span></div>
+      <div class="services-heading-row"><h2 class="section-heading" data-i18n="servicesHeading">Useful words.<br>Across the journey.</h2><p data-i18n="servicesIntro">Choose a service to see the kind of work I can help with.</p></div>
+      <div class="service-list" id="serviceList">
+        <button class="service-item is-active" type="button" data-service="email"><span class="service-number mono">01</span><span class="service-name" data-i18n="serviceEmail">Email Copywriting</span><span class="service-arrow">↗</span></button>
+        <button class="service-item" type="button" data-service="ads"><span class="service-number mono">02</span><span class="service-name" data-i18n="serviceAds">Advertising Copywriting</span><span class="service-arrow">↗</span></button>
+        <button class="service-item" type="button" data-service="website"><span class="service-number mono">03</span><span class="service-name" data-i18n="serviceWebsite">Website Copywriting</span><span class="service-arrow">↗</span></button>
+        <button class="service-item" type="button" data-service="content"><span class="service-number mono">04</span><span class="service-name" data-i18n="serviceContent">Content Writing</span><span class="service-arrow">↗</span></button>
+        <button class="service-item" type="button" data-service="video"><span class="service-number mono">05</span><span class="service-name" data-i18n="serviceVideo">Video Scriptwriting</span><span class="service-arrow">↗</span></button>
+        <button class="service-item" type="button" data-service="strategy"><span class="service-number mono">06</span><span class="service-name" data-i18n="serviceStrategy">Content Strategy</span><span class="service-arrow">↗</span></button>
+      </div>
+      <aside class="service-detail" id="serviceDetail" aria-live="polite">
+        <div class="service-detail-top"><span class="mono" id="serviceDetailNo">SERVICE / 01</span><span class="service-detail-mark">✳</span></div>
+        <h3 id="serviceDetailTitle">Email Copywriting</h3>
+        <p id="serviceDetailBody">Cold outreach, email marketing and sequences built around one clear reason to open, read and respond.</p>
+        <div class="service-tags" id="serviceDetailTags"><span>Cold email</span><span>Email marketing</span><span>Email sequences</span></div>
+      </aside>
+    </section>
+
+    <section class="work section-light section-pad" id="work">
+      <div class="section-index mono"><span>04 / <span data-i18n="workIndex">SELECTED WORK</span></span><span data-i18n="workAside">A SELECTION OF PROJECTS & SAMPLES</span></div>
+      <div class="work-heading-row"><div><p class="eyebrow blue-eyebrow" data-i18n="workEyebrow">MADE FOR DIFFERENT BRIEFS.</p><h2 class="section-heading" data-i18n="workHeading">A few things<br>I’ve worked on<span class="blue-word">.</span></h2></div><p data-i18n="workIntro">A selection across strategy, email, advertising, writing and short-form video.</p></div>
+      <div class="featured-grid" id="featuredGrid"></div>
+      <div class="all-work-header"><h3 data-i18n="allWorkHeading">Browse the work</h3><span class="mono" id="projectCount">31 PROJECTS</span></div>
+      <div class="filter-row" id="filterRow" aria-label="Filter projects">
+        <button class="filter-button is-active" data-filter="all" type="button" data-i18n="filterAll">All work</button>
+        <button class="filter-button" data-filter="email" type="button">Email</button>
+        <button class="filter-button" data-filter="ads" type="button">Ads</button>
+        <button class="filter-button" data-filter="website" type="button">Website</button>
+        <button class="filter-button" data-filter="content" type="button">Content</button>
+        <button class="filter-button" data-filter="video" type="button">Video</button>
+        <button class="filter-button" data-filter="strategy" type="button">Strategy</button>
+      </div>
+      <div class="project-grid" id="projectGrid"></div>
+      <p class="work-footnote" data-i18n="workFootnote">Project pages are being developed from the original materials. No performance claims are added unless supported by the source.</p>
+    </section>
+
+    <section class="process section-dark section-pad" id="process">
+      <div class="section-index mono"><span>05 / <span data-i18n="processIndex">HOW I WORK</span></span><span data-i18n="processAside">A PRACTICAL PROCESS</span></div>
+      <h2 class="section-heading light-heading process-heading" data-i18n="processHeading">Less guesswork.<br><span class="blue-word">More intention.</span></h2>
+      <div class="process-steps">
+        <article><span class="mono">01 / DISCOVER</span><h3 data-i18n="process1Title">Get the context.</h3><p data-i18n="process1Body">Align on the audience, offer, objective, constraints and what success should look like.</p></article>
+        <article><span class="mono">02 / SHAPE</span><h3 data-i18n="process2Title">Find the message.</h3><p data-i18n="process2Body">Research, organise the key points and decide what the reader needs to know first.</p></article>
+        <article><span class="mono">03 / WRITE</span><h3 data-i18n="process3Title">Make it work.</h3><p data-i18n="process3Body">Write, edit and refine the copy for its audience, channel and next action.</p></article>
+        <article><span class="mono">04 / REFINE</span><h3 data-i18n="process4Title">Improve with evidence.</h3><p data-i18n="process4Body">Review feedback or available results, then make focused improvements instead of guessing.</p></article>
+      </div>
+    </section>
+
+    <section class="contact section-blue section-pad" id="contact">
+      <div class="section-index mono"><span>06 / <span data-i18n="contactIndex">YOUR MOVE</span></span><span data-i18n="contactAside">HAVE SOMETHING IN MIND?</span></div>
+      <div class="contact-layout">
+        <div><p class="eyebrow" data-i18n="contactEyebrow">LET’S MAKE THE MESSAGE CLEAR.</p><h2 class="contact-heading" data-i18n="contactHeading">Got a brief?<br><em>Send it over.</em></h2></div>
+        <div class="contact-side"><p data-i18n="contactBody">Tell me what you’re working on, what you need and where you’re stuck. We can start with a conversation.</p><a class="email-link" href="mailto:khanhthienz146@gmail.com">khanhthienz146@gmail.com <span>↗</span></a><div class="social-links"><a href="https://www.linkedin.com/in/kh%C3%A1nh-thi%E1%BB%87n-lloyd-90896231b/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="https://web.facebook.com/khanh.thien.75873" target="_blank" rel="noopener noreferrer">FACEBOOK ↗</a></div></div>
+      </div>
+      <div class="closing-portrait" data-photo-slot="closing"><div class="closing-photo-placeholder"><span class="mono">02 / <span data-i18n="portraitClosing">CLOSING PORTRAIT</span></span><p data-i18n="photoPending">Photo will be added</p></div><img class="closing-photo-real" src="assets/portrait-closing.jpg" alt="Lloyd Tran full-body portrait" onerror="this.hidden=true"><div class="closing-signature">LLOYD<br><span>TRAN.</span></div></div>
+      <footer class="site-footer mono"><span>© <span id="year">2026</span> LLOYD TRAN</span><span data-i18n="footerNote">BUILT WITH CLARITY & INTENT.</span><a href="#top" data-i18n="backTop">BACK TO TOP ↑</a></footer>
+    </section>
+  </main>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+</body>
+</html>
