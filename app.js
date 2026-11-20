@@ -50,3 +50,128 @@ function renderProjects(){const grid=$("#projectGrid"),featured=$("#featuredGrid
 function init(){const toggle=$("#langToggle");toggle?.addEventListener("click",()=>{lang=lang==="en"?"vi":"en";applyLanguage();});$("#filterRow")?.addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;filter=b.dataset.filter;document.querySelectorAll(".filter-button").forEach(x=>x.classList.toggle("is-active",x===b));renderProjects();});$("#serviceList")?.addEventListener("click",e=>{const b=e.target.closest("[data-service]");if(!b)return;document.querySelectorAll(".service-item").forEach(x=>x.classList.toggle("is-active",x===b));renderService(b.dataset.service);});$("#menuToggle")?.addEventListener("click",()=>{const n=$("#mobileNav");n.classList.toggle("is-open");$("#menuToggle").setAttribute("aria-expanded",n.classList.contains("is-open"));});$("#mobileNav")?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>$("#mobileNav").classList.remove("is-open")));$("#year")?.replaceChildren(document.createTextNode(new Date().getFullYear()));applyLanguage();if($("#caseRoot"))renderCase();}
 function renderCase(){const i=Math.max(0,Math.min(projects.length-1,Number(new URLSearchParams(location.search).get("id"))||0)),p=projects[i],root=$("#caseRoot");document.title=p[0]+" — Lloyd Tran";root.innerHTML='<section class="case-hero"><div class="case-top mono"><a href="index.html#work">← ALL PROJECTS</a><span>PROJECT / '+String(i+1).padStart(2,"0")+'</span></div><p class="case-category">'+p[1]+'</p><h1>'+p[0]+'</h1><div class="case-meta"><div><span>DISCIPLINE</span><p>'+p[2].split(",").join(" · ")+'</p></div><div><span>FORMAT</span><p>Selected work / sample</p></div><div><span>SOURCE</span><p>Original project material</p></div></div></section><section class="case-body"><p class="mono">PROJECT OVERVIEW</p><h2>Explore the original work.</h2><p>This portfolio entry links to the source material provided for this project. A fuller case study can be added after reviewing the brief, deliverables and available evidence. No outcomes or performance figures are assumed here.</p><a class="case-source-link" href="'+p[3]+'" target="_blank" rel="noopener noreferrer">OPEN ORIGINAL MATERIAL ↗</a><p class="case-note">The source may require access permission. Project descriptions and results will be expanded only after the underlying material has been reviewed.</p><a class="case-back-link" href="index.html#work">← BACK TO ALL WORK</a></section>';}
 document.addEventListener("DOMContentLoaded",init);
+
+
+/* Progressive motion layer. If motion APIs are unavailable, all content remains visible. */
+(function () {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (reducedMotion) return;
+
+    const progress = document.createElement("div");
+    progress.className = "scroll-progress";
+    progress.setAttribute("aria-hidden", "true");
+    document.body.appendChild(progress);
+
+    let scrollFrame = 0;
+    function updateProgress() {
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(function () {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const amount = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        progress.style.transform = "scaleX(" + Math.max(0, Math.min(1, amount)) + ")";
+      });
+    }
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    if ("IntersectionObserver" in window) {
+      document.body.classList.add("motion-ready");
+      const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -7% 0px" });
+
+      const revealSelector = [
+        ".section-index", ".about-copy > *", ".about-visual",
+        ".thinking-layout > *", ".thinking-points article",
+        ".services-heading-row > *", ".service-item", ".service-detail",
+        ".work-heading-row > *", ".all-work-header", ".filter-row",
+        ".project-card", ".process-heading", ".process-steps article",
+        ".contact-layout > *", ".closing-portrait"
+      ].join(",");
+
+      function observeRevealTargets() {
+        document.querySelectorAll(revealSelector).forEach(function (element, index) {
+          if (element.dataset.motionObserved === "true") return;
+          element.dataset.motionObserved = "true";
+          element.classList.add("scroll-reveal");
+          if (element.matches(".section-heading,.contact-heading")) element.classList.add("motion-heading");
+          const siblingIndex = Array.prototype.indexOf.call(element.parentElement.children, element);
+          element.style.setProperty("--reveal-delay", Math.min(siblingIndex * 75, 300) + "ms");
+          revealObserver.observe(element);
+        });
+      }
+
+      observeRevealTargets();
+      const projectGrids = [document.getElementById("featuredGrid"), document.getElementById("projectGrid")].filter(Boolean);
+      if ("MutationObserver" in window) {
+        const gridObserver = new MutationObserver(observeRevealTargets);
+        projectGrids.forEach(function (grid) { gridObserver.observe(grid, { childList: true }); });
+      }
+    }
+
+    const serviceList = document.getElementById("serviceList");
+    if (serviceList) {
+      serviceList.addEventListener("click", function () {
+        const detail = document.getElementById("serviceDetail");
+        if (!detail) return;
+        detail.classList.remove("is-changing");
+        void detail.offsetWidth;
+        detail.classList.add("is-changing");
+      });
+    }
+
+    if (finePointer) {
+      const cursor = document.getElementById("cursorDot");
+      if (cursor) document.body.classList.add("has-custom-cursor");
+      const stamp = document.querySelector(".hero-stamp");
+      let activeCard = null;
+
+      window.addEventListener("pointermove", function (event) {
+        if (cursor) {
+          cursor.style.left = event.clientX + "px";
+          cursor.style.top = event.clientY + "px";
+          cursor.classList.add("is-visible");
+        }
+
+        if (stamp && event.clientY < window.innerHeight * 1.25) {
+          const px = (event.clientX / window.innerWidth - 0.5) * 18;
+          const py = (event.clientY / window.innerHeight - 0.5) * 14;
+          stamp.style.setProperty("--pointer-x", px.toFixed(1) + "px");
+          stamp.style.setProperty("--pointer-y", py.toFixed(1) + "px");
+        }
+
+        const card = event.target && event.target.closest ? event.target.closest(".project-card") : null;
+        if (activeCard && activeCard !== card) {
+          activeCard.style.setProperty("--tilt-x", "0deg");
+          activeCard.style.setProperty("--tilt-y", "0deg");
+        }
+        activeCard = card;
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const dx = (event.clientX - rect.left) / rect.width - 0.5;
+          const dy = (event.clientY - rect.top) / rect.height - 0.5;
+          card.style.setProperty("--tilt-x", (-dy * 5).toFixed(2) + "deg");
+          card.style.setProperty("--tilt-y", (dx * 6).toFixed(2) + "deg");
+        }
+      }, { passive: true });
+
+      if (cursor) {
+        document.addEventListener("pointerover", function (event) {
+          const target = event.target && event.target.closest ? event.target.closest("a,button,.project-card") : null;
+          cursor.classList.toggle("is-hovering", Boolean(target));
+        });
+        document.addEventListener("pointerleave", function () {
+          cursor.classList.remove("is-visible", "is-hovering");
+        });
+      }
+    }
+  });
+})();
